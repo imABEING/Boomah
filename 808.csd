@@ -1,18 +1,19 @@
 <Cabbage>
 form caption("Booma"), size(600, 400), pluginid("Booma"), colour("109,80,123,0")
 image file("watergirls.jpg"), bounds("0, 0, 600, 400"), alpha(.7)
+label align("centre"), bounds(350, 250, 250, 45), alpha(.75), colour("0,0,0,0"), fontcolour("0,192,192"), text("@rolexalexx"), tofront()
 
 ;Keyboard
 keyboard bounds(0, 300, 600, 100)
 
 ;Ampl Envelope
-rslider bounds (100, 100, 100, 100), channel("att"), text("Attack"), colour("0,0,0,0"), trackercolour(255,105,180)
-rslider bounds (200, 100, 100, 100), channel("dec"), text("Decay"), colour("0,0,0,0"), trackercolour("0,255,0")
-rslider bounds (300, 100, 100, 100), channel("sus"), text("Sustain"), colour("0,0,0,0"), trackercolour("0,255,0")
-rslider bounds (400, 100, 100, 100), channel("rel"), text("Release"), colour("0,0,0,0"), trackercolour(255,105,180)
+rslider bounds (100, 100, 100, 100), channel("att"), text("Attack"), colour("0,0,0,0"), trackercolour(255,105,180), range(0, 1, .01, 1, .01)
+rslider bounds (200, 100, 100, 100), channel("dec"), text("Decay"), colour("0,0,0,0"), trackercolour("0,255,0"), range(0, 1, .5, 1, .01)
+rslider bounds (300, 100, 100, 100), channel("sus"), text("Sustain"), colour("0,0,0,0"), trackercolour("0,255,0"), range(0, 1, .2, 1, .01)
+rslider bounds (400, 100, 100, 100), channel("rel"), text("Release"), colour("0,0,0,0"), trackercolour(255,105,180), range(0, 1, .3, 1, .01)
 
 ;Output Gain
-vslider bounds (540, 20, 40, 100), channel("gain"), trackercolour(255,105,180)
+vslider bounds (540, 20, 40, 100), channel("gain"), trackercolour(255,105,180), range(0, 1, .7, .5, .01)
 
 </Cabbage>
 <CsoundSynthesizer>
@@ -50,8 +51,8 @@ asig  poscil .8, icps, gisine
 
 ;gkAtt = .01
 gkAtt = 0.01
-gkDec = 0.2
-gkSus = 0.2
+gkDec = 0.5
+gkSus = 0.3
 gkRel = 0.2
 
 gkAtt = chnget:k("att")
